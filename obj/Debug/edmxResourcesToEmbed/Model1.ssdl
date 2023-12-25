@@ -1,0 +1,600 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AttendanceManagmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ApprovalLevels">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApprovalSetting_Id" Type="int" />
+    <Property Name="EmployeePositions_Id" Type="int" />
+    <Property Name="WillStatus" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ApprovalSettings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestType" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AppUserRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AppUser_Id" Type="int" Nullable="false" />
+    <Property Name="Role_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AttendanceRules">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Schedule_Id" Type="int" />
+    <Property Name="StartClockIn" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LateComers" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LateAbsent" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="EarlyLeave" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="EarlyAbsent" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="EndClockIn" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SumOfLateAndEarly" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NoClockInConsiderAs" Type="nvarchar" MaxLength="50" />
+    <Property Name="NoClockOutConsiderAs" Type="nvarchar" MaxLength="50" />
+    <Property Name="NoClockInAndOutConsiderAs" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="BranchDepartments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Branch_Id" Type="int" />
+    <Property Name="Department_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Branches">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Company_Id" Type="int" />
+    <Property Name="BranchName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BranchAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Companies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="300" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Website" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Deductions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeductionName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="DepartmentPositions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Department_Id" Type="int" />
+    <Property Name="Position_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="300" />
+    <Property Name="Department_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="EmployeeAttendanceDatas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Employee_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="EmployeeDayOffs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DayOff_Id" Type="int" />
+    <Property Name="Employee_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="EmployeeLeaveSettings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Employee_Id" Type="int" />
+    <Property Name="LeaveType_Id" Type="int" />
+    <Property Name="LeaveBalance" Type="int" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateOfBirth" Type="datetime" />
+    <Property Name="Position_Id" Type="int" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="MobileNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="MotherName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="100" />
+    <Property Name="HiredDate" Type="datetime" />
+    <Property Name="EmploymentType" Type="nvarchar" MaxLength="50" />
+    <Property Name="EndDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmployeeSchedules">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Employee_Id" Type="int" />
+    <Property Name="Schedule_Id" Type="int" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="EmployeeTrainings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Training_Id" Type="int" />
+    <Property Name="Employee_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="GradeDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Grade_Id" Type="int" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Grades">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GradeName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Holidays">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Schedule_Id" Type="int" />
+    <Property Name="HolidayName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Description" Type="nvarchar" MaxLength="300" />
+    <Property Name="CyclePerYear" Type="bit" />
+    <Property Name="Type" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="LeaveRequests">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Employee_Id" Type="int" />
+    <Property Name="RequestDateFrom" Type="datetime" />
+    <Property Name="RequestDateTo" Type="datetime" />
+    <Property Name="NoOfDaysRequested" Type="int" />
+    <Property Name="LeaveType_Id" Type="int" />
+    <Property Name="LeaveAttachment" Type="nvarchar" MaxLength="100" />
+    <Property Name="CurrentApprover" Type="int" />
+    <Property Name="CurrentLevel" Type="int" />
+    <Property Name="RequestType" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProgressStatus" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LeaveRequestStatuses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LeaveRequest_Id" Type="int" />
+    <Property Name="ApprovalDate" Type="datetime" />
+    <Property Name="ApprovalStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="RejectedReason" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LeaveTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaximumAmount" Type="int" />
+    <Property Name="GenderType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IncreamentalValue" Type="int" />
+    <Property Name="IfBorrow" Type="bit" />
+  </EntityType>
+  <EntityType Name="NodeRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Node_Id" Type="int" Nullable="false" />
+    <Property Name="Role_Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ViewAllowed" Type="bit" Nullable="false" />
+    <Property Name="EditAllowed" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Nodes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="PocModule_Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="FilePath" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ImagePath" Type="nvarchar" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="PageId" Type="nvarchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="Overdatetimes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Overtimes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Pensions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AmountInPercent" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="PocModules">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="FolderPath" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PopupMenus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Tab_Id" Type="int" Nullable="false" />
+    <Property Name="Node_Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Position" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PositionAllowances">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Tax" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Positions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PositionName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="ProvidentFunds">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AmountInPercent" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="PermissionLevel" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Shedules">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScheduleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TabRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Tab_Id" Type="int" Nullable="false" />
+    <Property Name="Role_Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ViewAllowed" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tabs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="PocModule_Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TabName" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="Position" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="156" />
+  </EntityType>
+  <EntityType Name="TaskPanNodes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="TaskPan_Id" Type="int" Nullable="false" />
+    <Property Name="Node_Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Position" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaskPans">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Tab_Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="Position" Type="int" Nullable="false" />
+    <Property Name="ImagePath" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Trainings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TransportAllowances">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AllowanceType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Tax" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <Association Name="FK_AppUserRole_Role">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="AppUserRoles" Type="Self.AppUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AppUserRoles">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NodeRole_Node">
+    <End Role="Nodes" Type="Self.Nodes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="NodeRoles" Type="Self.NodeRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nodes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NodeRoles">
+        <PropertyRef Name="Node_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NodeRole_Role">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="NodeRoles" Type="Self.NodeRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NodeRoles">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PopupMenu_Node">
+    <End Role="Nodes" Type="Self.Nodes" Multiplicity="1" />
+    <End Role="PopupMenus" Type="Self.PopupMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nodes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PopupMenus">
+        <PropertyRef Name="Node_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PopupMenu_Tab">
+    <End Role="Tabs" Type="Self.Tabs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PopupMenus" Type="Self.PopupMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tabs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PopupMenus">
+        <PropertyRef Name="Tab_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TabRole_Role">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="TabRoles" Type="Self.TabRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TabRoles">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TabRole_Tab">
+    <End Role="Tabs" Type="Self.Tabs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TabRoles" Type="Self.TabRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tabs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TabRoles">
+        <PropertyRef Name="Tab_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskPan_Tab">
+    <End Role="Tabs" Type="Self.Tabs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TaskPans" Type="Self.TaskPans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tabs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskPans">
+        <PropertyRef Name="Tab_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskPanNode_Node">
+    <End Role="Nodes" Type="Self.Nodes" Multiplicity="1" />
+    <End Role="TaskPanNodes" Type="Self.TaskPanNodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nodes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskPanNodes">
+        <PropertyRef Name="Node_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskPanNode_TaskPan">
+    <End Role="TaskPans" Type="Self.TaskPans" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TaskPanNodes" Type="Self.TaskPanNodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaskPans">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskPanNodes">
+        <PropertyRef Name="TaskPan_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AttendanceManagmentModelStoreContainer">
+    <EntitySet Name="ApprovalLevels" EntityType="Self.ApprovalLevels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApprovalSettings" EntityType="Self.ApprovalSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AppUserRoles" EntityType="Self.AppUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AttendanceRules" EntityType="Self.AttendanceRules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BranchDepartments" EntityType="Self.BranchDepartments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Branches" EntityType="Self.Branches" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Deductions" EntityType="Self.Deductions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DepartmentPositions" EntityType="Self.DepartmentPositions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeAttendanceDatas" EntityType="Self.EmployeeAttendanceDatas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeDayOffs" EntityType="Self.EmployeeDayOffs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeLeaveSettings" EntityType="Self.EmployeeLeaveSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeSchedules" EntityType="Self.EmployeeSchedules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeTrainings" EntityType="Self.EmployeeTrainings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GradeDetails" EntityType="Self.GradeDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Grades" EntityType="Self.Grades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Holidays" EntityType="Self.Holidays" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeaveRequests" EntityType="Self.LeaveRequests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeaveRequestStatuses" EntityType="Self.LeaveRequestStatuses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeaveTypes" EntityType="Self.LeaveTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NodeRoles" EntityType="Self.NodeRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Nodes" EntityType="Self.Nodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Overdatetimes" EntityType="Self.Overdatetimes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Overtimes" EntityType="Self.Overtimes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pensions" EntityType="Self.Pensions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PocModules" EntityType="Self.PocModules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PopupMenus" EntityType="Self.PopupMenus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PositionAllowances" EntityType="Self.PositionAllowances" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProvidentFunds" EntityType="Self.ProvidentFunds" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Shedules" EntityType="Self.Shedules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TabRoles" EntityType="Self.TabRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tabs" EntityType="Self.Tabs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaskPanNodes" EntityType="Self.TaskPanNodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaskPans" EntityType="Self.TaskPans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trainings" EntityType="Self.Trainings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransportAllowances" EntityType="Self.TransportAllowances" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AppUserRole_Role" Association="Self.FK_AppUserRole_Role">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="AppUserRoles" EntitySet="AppUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NodeRole_Node" Association="Self.FK_NodeRole_Node">
+      <End Role="Nodes" EntitySet="Nodes" />
+      <End Role="NodeRoles" EntitySet="NodeRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NodeRole_Role" Association="Self.FK_NodeRole_Role">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="NodeRoles" EntitySet="NodeRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PopupMenu_Node" Association="Self.FK_PopupMenu_Node">
+      <End Role="Nodes" EntitySet="Nodes" />
+      <End Role="PopupMenus" EntitySet="PopupMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PopupMenu_Tab" Association="Self.FK_PopupMenu_Tab">
+      <End Role="Tabs" EntitySet="Tabs" />
+      <End Role="PopupMenus" EntitySet="PopupMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TabRole_Role" Association="Self.FK_TabRole_Role">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="TabRoles" EntitySet="TabRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TabRole_Tab" Association="Self.FK_TabRole_Tab">
+      <End Role="Tabs" EntitySet="Tabs" />
+      <End Role="TabRoles" EntitySet="TabRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskPan_Tab" Association="Self.FK_TaskPan_Tab">
+      <End Role="Tabs" EntitySet="Tabs" />
+      <End Role="TaskPans" EntitySet="TaskPans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskPanNode_Node" Association="Self.FK_TaskPanNode_Node">
+      <End Role="Nodes" EntitySet="Nodes" />
+      <End Role="TaskPanNodes" EntitySet="TaskPanNodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskPanNode_TaskPan" Association="Self.FK_TaskPanNode_TaskPan">
+      <End Role="TaskPans" EntitySet="TaskPans" />
+      <End Role="TaskPanNodes" EntitySet="TaskPanNodes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

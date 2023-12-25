@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AllLeave" targetNamespace="http://tempuri.org/AllLeave.xsd" xmlns:mstns="http://tempuri.org/AllLeave.xsd" xmlns="http://tempuri.org/AllLeave.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="AttendanceManagmentConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="AttendanceManagmentConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.AttendanceManagmentConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="empLeaveTableAdapter" GeneratorDataComponentClassName="empLeaveTableAdapter" Name="empLeave" UserDataComponentName="empLeaveTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AttendanceManagmentConnectionString (Web.config)" DbObjectName="AttendanceManagment.dbo.empLeave" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT FullName, Id, EmpId, Date_From, Date_To, NoOfDaysRequested, Name, ProgressStatus, NoOfDaysAUT, Balance FROM empLeave</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="FullName" DataSetColumn="FullName" />
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="EmpId" DataSetColumn="EmpId" />
+              <Mapping SourceColumn="Date_From" DataSetColumn="Date_From" />
+              <Mapping SourceColumn="Date_To" DataSetColumn="Date_To" />
+              <Mapping SourceColumn="NoOfDaysRequested" DataSetColumn="NoOfDaysRequested" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="ProgressStatus" DataSetColumn="ProgressStatus" />
+              <Mapping SourceColumn="NoOfDaysAUT" DataSetColumn="NoOfDaysAUT" />
+              <Mapping SourceColumn="Balance" DataSetColumn="Balance" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AllLeave" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="AllLeave" msprop:Generator_UserDSName="AllLeave">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="empLeave" msprop:Generator_TableClassName="empLeaveDataTable" msprop:Generator_TableVarName="tableempLeave" msprop:Generator_TablePropName="empLeave" msprop:Generator_RowDeletingName="empLeaveRowDeleting" msprop:Generator_UserTableName="empLeave" msprop:Generator_RowChangingName="empLeaveRowChanging" msprop:Generator_RowEvHandlerName="empLeaveRowChangeEventHandler" msprop:Generator_RowDeletedName="empLeaveRowDeleted" msprop:Generator_RowEvArgName="empLeaveRowChangeEvent" msprop:Generator_RowChangedName="empLeaveRowChanged" msprop:Generator_RowClassName="empLeaveRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FullName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFullName" msprop:Generator_ColumnPropNameInRow="FullName" msprop:Generator_ColumnPropNameInTable="FullNameColumn" msprop:Generator_UserColumnName="FullName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="152" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="EmpId" msprop:Generator_ColumnVarNameInTable="columnEmpId" msprop:Generator_ColumnPropNameInRow="EmpId" msprop:Generator_ColumnPropNameInTable="EmpIdColumn" msprop:Generator_UserColumnName="EmpId" type="xs:int" />
+              <xs:element name="Date_From" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDate_From" msprop:Generator_ColumnPropNameInRow="Date_From" msprop:Generator_ColumnPropNameInTable="Date_FromColumn" msprop:Generator_UserColumnName="Date_From" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Date_To" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDate_To" msprop:Generator_ColumnPropNameInRow="Date_To" msprop:Generator_ColumnPropNameInTable="Date_ToColumn" msprop:Generator_UserColumnName="Date_To" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NoOfDaysRequested" msprop:Generator_ColumnVarNameInTable="columnNoOfDaysRequested" msprop:Generator_ColumnPropNameInRow="NoOfDaysRequested" msprop:Generator_ColumnPropNameInTable="NoOfDaysRequestedColumn" msprop:Generator_UserColumnName="NoOfDaysRequested" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProgressStatus" msprop:Generator_ColumnVarNameInTable="columnProgressStatus" msprop:Generator_ColumnPropNameInRow="ProgressStatus" msprop:Generator_ColumnPropNameInTable="ProgressStatusColumn" msprop:Generator_UserColumnName="ProgressStatus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NoOfDaysAUT" msprop:Generator_ColumnVarNameInTable="columnNoOfDaysAUT" msprop:Generator_ColumnPropNameInRow="NoOfDaysAUT" msprop:Generator_ColumnPropNameInTable="NoOfDaysAUTColumn" msprop:Generator_UserColumnName="NoOfDaysAUT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Balance" msprop:Generator_ColumnVarNameInTable="columnBalance" msprop:Generator_ColumnPropNameInRow="Balance" msprop:Generator_ColumnPropNameInTable="BalanceColumn" msprop:Generator_UserColumnName="Balance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CompanyName" msprop:Generator_ColumnVarNameInTable="columnCompanyName" msprop:Generator_ColumnPropNameInRow="CompanyName" msprop:Generator_ColumnPropNameInTable="CompanyNameColumn" msprop:Generator_UserColumnName="CompanyName" type="xs:string" minOccurs="0" />
+              <xs:element name="DateF" msprop:Generator_ColumnVarNameInTable="columnDateF" msprop:Generator_ColumnPropNameInRow="DateF" msprop:Generator_ColumnPropNameInTable="DateFColumn" msprop:Generator_UserColumnName="DateF" type="xs:string" minOccurs="0" />
+              <xs:element name="DateT" msprop:Generator_ColumnVarNameInTable="columnDateT" msprop:Generator_ColumnPropNameInRow="DateT" msprop:Generator_ColumnPropNameInTable="DateTColumn" msprop:Generator_UserColumnName="DateT" type="xs:string" minOccurs="0" />
+              <xs:element name="Desc" msprop:Generator_ColumnVarNameInTable="columnDesc" msprop:Generator_ColumnPropNameInRow="Desc" msprop:Generator_ColumnPropNameInTable="DescColumn" msprop:Generator_UserColumnName="Desc" type="xs:string" minOccurs="0" />
+              <xs:element name="DepartmentName" msprop:Generator_ColumnVarNameInTable="columnDepartmentName" msprop:Generator_ColumnPropNameInRow="DepartmentName" msprop:Generator_ColumnPropNameInTable="DepartmentNameColumn" msprop:Generator_UserColumnName="DepartmentName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

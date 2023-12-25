@@ -1,0 +1,620 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AttendanceManagmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ApprovalLevel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApprovalSetting_Id" Type="Int32" />
+    <Property Name="EmployeePositions_Id" Type="Int32" />
+    <Property Name="WillStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ApprovalSetting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AppUserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AppUser_Id" Type="Int32" Nullable="false" />
+    <Property Name="Role_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_AppUserRole_Role" FromRole="AppUserRoles" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="AttendanceRule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Schedule_Id" Type="Int32" />
+    <Property Name="StartClockIn" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="LateComers" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="LateAbsent" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="EarlyLeave" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="EarlyAbsent" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="EndClockIn" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="SumOfLateAndEarly" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="NoClockInConsiderAs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NoClockOutConsiderAs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NoClockInAndOutConsiderAs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BranchDepartment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Branch_Id" Type="Int32" />
+    <Property Name="Department_Id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Company_Id" Type="Int32" />
+    <Property Name="BranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BranchAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Deduction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeductionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="DepartmentPosition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Department_Id" Type="Int32" />
+    <Property Name="Position_Id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Department_Id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="EmployeeAttendanceData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Employee_Id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="EmployeeDayOff">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DayOff_Id" Type="Int32" />
+    <Property Name="Employee_Id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="EmployeeLeaveSetting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Employee_Id" Type="Int32" />
+    <Property Name="LeaveType_Id" Type="Int32" />
+    <Property Name="LeaveBalance" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+    <Property Name="Position_Id" Type="Int32" />
+    <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MotherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HiredDate" Type="DateTime" Precision="3" />
+    <Property Name="EmploymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="EmployeeSchedule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Employee_Id" Type="Int32" />
+    <Property Name="Schedule_Id" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="EmployeeTraining">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Training_Id" Type="Int32" />
+    <Property Name="Employee_Id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="GradeDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Grade_Id" Type="Int32" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Grade">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GradeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Holiday">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Schedule_Id" Type="Int32" />
+    <Property Name="HolidayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="CyclePerYear" Type="Boolean" />
+    <Property Name="Type" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="LeaveRequest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Employee_Id" Type="Int32" />
+    <Property Name="RequestDateFrom" Type="DateTime" Precision="3" />
+    <Property Name="RequestDateTo" Type="DateTime" Precision="3" />
+    <Property Name="NoOfDaysRequested" Type="Int32" />
+    <Property Name="LeaveType_Id" Type="Int32" />
+    <Property Name="LeaveAttachment" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentApprover" Type="Int32" />
+    <Property Name="CurrentLevel" Type="Int32" />
+    <Property Name="RequestType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProgressStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LeaveRequestStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LeaveRequest_Id" Type="Int32" />
+    <Property Name="ApprovalDate" Type="DateTime" Precision="3" />
+    <Property Name="ApprovalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RejectedReason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LeaveType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaximumAmount" Type="Int32" />
+    <Property Name="GenderType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IncreamentalValue" Type="Int32" />
+    <Property Name="IfBorrow" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="NodeRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Node_Id" Type="Int32" Nullable="false" />
+    <Property Name="Role_Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ViewAllowed" Type="Boolean" Nullable="false" />
+    <Property Name="EditAllowed" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Node" Relationship="Self.FK_NodeRole_Node" FromRole="NodeRoles" ToRole="Nodes" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_NodeRole_Role" FromRole="NodeRoles" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="Node">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="PocModule_Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FilePath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ImagePath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PageId" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NodeRoles" Relationship="Self.FK_NodeRole_Node" FromRole="Nodes" ToRole="NodeRoles" />
+    <NavigationProperty Name="PopupMenus" Relationship="Self.FK_PopupMenu_Node" FromRole="Nodes" ToRole="PopupMenus" />
+    <NavigationProperty Name="TaskPanNodes" Relationship="Self.FK_TaskPanNode_Node" FromRole="Nodes" ToRole="TaskPanNodes" />
+  </EntityType>
+  <EntityType Name="Overdatetime">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Overtime">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Pension">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AmountInPercent" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PocModule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FolderPath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PopupMenu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Tab_Id" Type="Int32" Nullable="false" />
+    <Property Name="Node_Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Position" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Node" Relationship="Self.FK_PopupMenu_Node" FromRole="PopupMenus" ToRole="Nodes" />
+    <NavigationProperty Name="Tab" Relationship="Self.FK_PopupMenu_Tab" FromRole="PopupMenus" ToRole="Tabs" />
+  </EntityType>
+  <EntityType Name="PositionAllowance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Tax" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PositionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ProvidentFund">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AmountInPercent" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PermissionLevel" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AppUserRoles" Relationship="Self.FK_AppUserRole_Role" FromRole="Roles" ToRole="AppUserRoles" />
+    <NavigationProperty Name="NodeRoles" Relationship="Self.FK_NodeRole_Role" FromRole="Roles" ToRole="NodeRoles" />
+    <NavigationProperty Name="TabRoles" Relationship="Self.FK_TabRole_Role" FromRole="Roles" ToRole="TabRoles" />
+  </EntityType>
+  <EntityType Name="Shedule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ScheduleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TabRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Tab_Id" Type="Int32" Nullable="false" />
+    <Property Name="Role_Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ViewAllowed" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_TabRole_Role" FromRole="TabRoles" ToRole="Roles" />
+    <NavigationProperty Name="Tab" Relationship="Self.FK_TabRole_Tab" FromRole="TabRoles" ToRole="Tabs" />
+  </EntityType>
+  <EntityType Name="Tab">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="PocModule_Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TabName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Position" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="156" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PopupMenus" Relationship="Self.FK_PopupMenu_Tab" FromRole="Tabs" ToRole="PopupMenus" />
+    <NavigationProperty Name="TabRoles" Relationship="Self.FK_TabRole_Tab" FromRole="Tabs" ToRole="TabRoles" />
+    <NavigationProperty Name="TaskPans" Relationship="Self.FK_TaskPan_Tab" FromRole="Tabs" ToRole="TaskPans" />
+  </EntityType>
+  <EntityType Name="TaskPanNode">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="TaskPan_Id" Type="Int32" Nullable="false" />
+    <Property Name="Node_Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Position" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Node" Relationship="Self.FK_TaskPanNode_Node" FromRole="TaskPanNodes" ToRole="Nodes" />
+    <NavigationProperty Name="TaskPan" Relationship="Self.FK_TaskPanNode_TaskPan" FromRole="TaskPanNodes" ToRole="TaskPans" />
+  </EntityType>
+  <EntityType Name="TaskPan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Tab_Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Position" Type="Int32" Nullable="false" />
+    <Property Name="ImagePath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Tab" Relationship="Self.FK_TaskPan_Tab" FromRole="TaskPans" ToRole="Tabs" />
+    <NavigationProperty Name="TaskPanNodes" Relationship="Self.FK_TaskPanNode_TaskPan" FromRole="TaskPans" ToRole="TaskPanNodes" />
+  </EntityType>
+  <EntityType Name="Training">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TransportAllowance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AllowanceType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Tax" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <Association Name="FK_AppUserRole_Role">
+    <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+    <End Role="AppUserRoles" Type="Self.AppUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AppUserRoles">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NodeRole_Node">
+    <End Role="Nodes" Type="Self.Node" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="NodeRoles" Type="Self.NodeRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nodes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NodeRoles">
+        <PropertyRef Name="Node_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NodeRole_Role">
+    <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+    <End Role="NodeRoles" Type="Self.NodeRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NodeRoles">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PopupMenu_Node">
+    <End Role="Nodes" Type="Self.Node" Multiplicity="1" />
+    <End Role="PopupMenus" Type="Self.PopupMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nodes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PopupMenus">
+        <PropertyRef Name="Node_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskPanNode_Node">
+    <End Role="Nodes" Type="Self.Node" Multiplicity="1" />
+    <End Role="TaskPanNodes" Type="Self.TaskPanNode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nodes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskPanNodes">
+        <PropertyRef Name="Node_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PopupMenu_Tab">
+    <End Role="Tabs" Type="Self.Tab" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PopupMenus" Type="Self.PopupMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tabs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PopupMenus">
+        <PropertyRef Name="Tab_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TabRole_Role">
+    <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+    <End Role="TabRoles" Type="Self.TabRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TabRoles">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TabRole_Tab">
+    <End Role="Tabs" Type="Self.Tab" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TabRoles" Type="Self.TabRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tabs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TabRoles">
+        <PropertyRef Name="Tab_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskPan_Tab">
+    <End Role="Tabs" Type="Self.Tab" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TaskPans" Type="Self.TaskPan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tabs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskPans">
+        <PropertyRef Name="Tab_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskPanNode_TaskPan">
+    <End Role="TaskPans" Type="Self.TaskPan" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TaskPanNodes" Type="Self.TaskPanNode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaskPans">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskPanNodes">
+        <PropertyRef Name="TaskPan_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AttendanceManagmentEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ApprovalLevels" EntityType="Self.ApprovalLevel" />
+    <EntitySet Name="ApprovalSettings" EntityType="Self.ApprovalSetting" />
+    <EntitySet Name="AppUserRoles" EntityType="Self.AppUserRole" />
+    <EntitySet Name="AttendanceRules" EntityType="Self.AttendanceRule" />
+    <EntitySet Name="BranchDepartments" EntityType="Self.BranchDepartment" />
+    <EntitySet Name="Branches" EntityType="Self.Branch" />
+    <EntitySet Name="Companies" EntityType="Self.Company" />
+    <EntitySet Name="Deductions" EntityType="Self.Deduction" />
+    <EntitySet Name="DepartmentPositions" EntityType="Self.DepartmentPosition" />
+    <EntitySet Name="Departments" EntityType="Self.Department" />
+    <EntitySet Name="EmployeeAttendanceDatas" EntityType="Self.EmployeeAttendanceData" />
+    <EntitySet Name="EmployeeDayOffs" EntityType="Self.EmployeeDayOff" />
+    <EntitySet Name="EmployeeLeaveSettings" EntityType="Self.EmployeeLeaveSetting" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="EmployeeSchedules" EntityType="Self.EmployeeSchedule" />
+    <EntitySet Name="EmployeeTrainings" EntityType="Self.EmployeeTraining" />
+    <EntitySet Name="GradeDetails" EntityType="Self.GradeDetail" />
+    <EntitySet Name="Grades" EntityType="Self.Grade" />
+    <EntitySet Name="Holidays" EntityType="Self.Holiday" />
+    <EntitySet Name="LeaveRequests" EntityType="Self.LeaveRequest" />
+    <EntitySet Name="LeaveRequestStatuses" EntityType="Self.LeaveRequestStatus" />
+    <EntitySet Name="LeaveTypes" EntityType="Self.LeaveType" />
+    <EntitySet Name="NodeRoles" EntityType="Self.NodeRole" />
+    <EntitySet Name="Nodes" EntityType="Self.Node" />
+    <EntitySet Name="Overdatetimes" EntityType="Self.Overdatetime" />
+    <EntitySet Name="Overtimes" EntityType="Self.Overtime" />
+    <EntitySet Name="Pensions" EntityType="Self.Pension" />
+    <EntitySet Name="PocModules" EntityType="Self.PocModule" />
+    <EntitySet Name="PopupMenus" EntityType="Self.PopupMenu" />
+    <EntitySet Name="PositionAllowances" EntityType="Self.PositionAllowance" />
+    <EntitySet Name="Positions" EntityType="Self.Position" />
+    <EntitySet Name="ProvidentFunds" EntityType="Self.ProvidentFund" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Shedules" EntityType="Self.Shedule" />
+    <EntitySet Name="TabRoles" EntityType="Self.TabRole" />
+    <EntitySet Name="Tabs" EntityType="Self.Tab" />
+    <EntitySet Name="TaskPanNodes" EntityType="Self.TaskPanNode" />
+    <EntitySet Name="TaskPans" EntityType="Self.TaskPan" />
+    <EntitySet Name="Trainings" EntityType="Self.Training" />
+    <EntitySet Name="TransportAllowances" EntityType="Self.TransportAllowance" />
+    <AssociationSet Name="FK_AppUserRole_Role" Association="Self.FK_AppUserRole_Role">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="AppUserRoles" EntitySet="AppUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NodeRole_Node" Association="Self.FK_NodeRole_Node">
+      <End Role="Nodes" EntitySet="Nodes" />
+      <End Role="NodeRoles" EntitySet="NodeRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NodeRole_Role" Association="Self.FK_NodeRole_Role">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="NodeRoles" EntitySet="NodeRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PopupMenu_Node" Association="Self.FK_PopupMenu_Node">
+      <End Role="Nodes" EntitySet="Nodes" />
+      <End Role="PopupMenus" EntitySet="PopupMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskPanNode_Node" Association="Self.FK_TaskPanNode_Node">
+      <End Role="Nodes" EntitySet="Nodes" />
+      <End Role="TaskPanNodes" EntitySet="TaskPanNodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PopupMenu_Tab" Association="Self.FK_PopupMenu_Tab">
+      <End Role="Tabs" EntitySet="Tabs" />
+      <End Role="PopupMenus" EntitySet="PopupMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TabRole_Role" Association="Self.FK_TabRole_Role">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="TabRoles" EntitySet="TabRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TabRole_Tab" Association="Self.FK_TabRole_Tab">
+      <End Role="Tabs" EntitySet="Tabs" />
+      <End Role="TabRoles" EntitySet="TabRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskPan_Tab" Association="Self.FK_TaskPan_Tab">
+      <End Role="Tabs" EntitySet="Tabs" />
+      <End Role="TaskPans" EntitySet="TaskPans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskPanNode_TaskPan" Association="Self.FK_TaskPanNode_TaskPan">
+      <End Role="TaskPans" EntitySet="TaskPans" />
+      <End Role="TaskPanNodes" EntitySet="TaskPanNodes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

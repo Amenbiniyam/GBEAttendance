@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AttAll" targetNamespace="http://tempuri.org/AttAll.xsd" xmlns:mstns="http://tempuri.org/AttAll.xsd" xmlns="http://tempuri.org/AttAll.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AttAll" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AttAll" msprop:Generator_UserDSName="AttAll">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblATTALL" msprop:Generator_TableClassName="tblATTALLDataTable" msprop:Generator_TableVarName="tabletblATTALL" msprop:Generator_TablePropName="tblATTALL" msprop:Generator_RowDeletingName="tblATTALLRowDeleting" msprop:Generator_UserTableName="tblATTALL" msprop:Generator_RowChangingName="tblATTALLRowChanging" msprop:Generator_RowEvHandlerName="tblATTALLRowChangeEventHandler" msprop:Generator_RowDeletedName="tblATTALLRowDeleted" msprop:Generator_RowEvArgName="tblATTALLRowChangeEvent" msprop:Generator_RowChangedName="tblATTALLRowChanged" msprop:Generator_RowClassName="tblATTALLRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="empId" msprop:Generator_ColumnVarNameInTable="columnempId" msprop:Generator_ColumnPropNameInRow="empId" msprop:Generator_ColumnPropNameInTable="empIdColumn" msprop:Generator_UserColumnName="empId" type="xs:string" minOccurs="0" />
+              <xs:element name="Full_Name" msprop:Generator_ColumnVarNameInTable="columnFull_Name" msprop:Generator_ColumnPropNameInRow="Full_Name" msprop:Generator_ColumnPropNameInTable="Full_NameColumn" msprop:Generator_UserColumnName="Full_Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:string" minOccurs="0" />
+              <xs:element name="Time" msprop:Generator_ColumnVarNameInTable="columnTime" msprop:Generator_ColumnPropNameInRow="Time" msprop:Generator_ColumnPropNameInTable="TimeColumn" msprop:Generator_UserColumnName="Time" type="xs:string" minOccurs="0" />
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:string" minOccurs="0" />
+              <xs:element name="Days" msprop:Generator_ColumnVarNameInTable="columnDays" msprop:Generator_ColumnPropNameInRow="Days" msprop:Generator_ColumnPropNameInTable="DaysColumn" msprop:Generator_UserColumnName="Days" type="xs:string" minOccurs="0" />
+              <xs:element name="Type" type="xs:string" minOccurs="0" />
+              <xs:element name="Department" msprop:Generator_ColumnVarNameInTable="columnDepartment" msprop:Generator_ColumnPropNameInRow="Department" msprop:Generator_ColumnPropNameInTable="DepartmentColumn" msprop:Generator_UserColumnName="Department" type="xs:string" minOccurs="0" />
+              <xs:element name="Late_Minute" type="xs:string" minOccurs="0" />
+              <xs:element name="CompanyName" type="xs:string" minOccurs="0" />
+              <xs:element name="DateF" type="xs:string" minOccurs="0" />
+              <xs:element name="DateT" type="xs:string" minOccurs="0" />
+              <xs:element name="Desc" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

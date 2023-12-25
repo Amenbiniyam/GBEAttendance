@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AttAll" targetNamespace="http://tempuri.org/AttAll.xsd" xmlns:mstns="http://tempuri.org/AttAll.xsd" xmlns="http://tempuri.org/AttAll.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AttAll" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AttAll" msprop:Generator_UserDSName="AttAll">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblDataATTALL" msprop:Generator_TableClassName="tblDataATTALLDataTable" msprop:Generator_TableVarName="tabletblDataATTALL" msprop:Generator_TablePropName="tblDataATTALL" msprop:Generator_RowDeletingName="tblDataATTALLRowDeleting" msprop:Generator_UserTableName="tblDataATTALL" msprop:Generator_RowChangingName="tblDataATTALLRowChanging" msprop:Generator_RowEvHandlerName="tblDataATTALLRowChangeEventHandler" msprop:Generator_RowDeletedName="tblDataATTALLRowDeleted" msprop:Generator_RowEvArgName="tblDataATTALLRowChangeEvent" msprop:Generator_RowChangedName="tblDataATTALLRowChanged" msprop:Generator_RowClassName="tblDataATTALLRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="empId" msprop:Generator_ColumnVarNameInTable="columnempId" msprop:Generator_ColumnPropNameInRow="empId" msprop:Generator_ColumnPropNameInTable="empIdColumn" msprop:Generator_UserColumnName="empId" type="xs:string" minOccurs="0" />
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:string" minOccurs="0" />
+              <xs:element name="Time" msprop:Generator_ColumnVarNameInTable="columnTime" msprop:Generator_ColumnPropNameInRow="Time" msprop:Generator_ColumnPropNameInTable="TimeColumn" msprop:Generator_UserColumnName="Time" type="xs:string" minOccurs="0" />
+              <xs:element name="CompanyName" msprop:Generator_ColumnVarNameInTable="columnCompanyName" msprop:Generator_ColumnPropNameInRow="CompanyName" msprop:Generator_ColumnPropNameInTable="CompanyNameColumn" msprop:Generator_UserColumnName="CompanyName" type="xs:string" minOccurs="0" />
+              <xs:element name="DateF" msprop:Generator_ColumnVarNameInTable="columnDateF" msprop:Generator_ColumnPropNameInRow="DateF" msprop:Generator_ColumnPropNameInTable="DateFColumn" msprop:Generator_UserColumnName="DateF" type="xs:string" minOccurs="0" />
+              <xs:element name="DateT" msprop:Generator_ColumnVarNameInTable="columnDateT" msprop:Generator_ColumnPropNameInRow="DateT" msprop:Generator_ColumnPropNameInTable="DateTColumn" msprop:Generator_UserColumnName="DateT" type="xs:string" minOccurs="0" />
+              <xs:element name="Desc" msprop:Generator_ColumnVarNameInTable="columnDesc" msprop:Generator_ColumnPropNameInRow="Desc" msprop:Generator_ColumnPropNameInTable="DescColumn" msprop:Generator_UserColumnName="Desc" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
